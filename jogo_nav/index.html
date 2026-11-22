@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nave — Arquitetura Computacional</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+
+    <!-- Bloco 1: como o jogo funciona -->
+    <aside class="help-col">
+      <h2>Como jogar</h2>
+      <ol class="help-steps">
+        <li>Leia a pergunta e <strong>digite a palavra certa</strong> no campo (Enter confirma).</li>
+        <li>As 5 palavras começam <strong>invisíveis</strong> e vão aparecendo aos poucos ao longo dos 40s.</li>
+        <li><strong>Barrinha de tempo (40s):</strong> quando zerar, conta 1 erro e a pergunta passa para a próxima.</li>
+        <li>3 erros na mesma pergunta = <strong>−1 vida</strong>.</li>
+        <li>Você tem <strong>3 vidas</strong> · 100 pts por acerto + bônus por responder rápido.</li>
+      </ol>
+      <h2>Modos</h2>
+      <p><strong>Fácil:</strong> a nave fica parada — só as palavras na tela.</p>
+      <p><strong>Difícil:</strong> caem <strong>asteroides</strong> — desvie com ← → (ou arrastando o dedo). Cada colisão = <strong>−1 vida</strong>.</p>
+    </aside>
+
+    <!-- Bloco 2: perguntas + jogo -->
+    <div class="game-col">
+
+    <!-- Cabeçalho -->
+    <header class="header">
+      <h1>NAVE ARQ.COMP</h1>
+      <p class="subtitle">Digite a palavra certa antes que todas as palavras apareçam na tela · Arquitetura Computacional e Lógica Digital</p>
+    </header>
+
+    <!-- HUD -->
+    <section class="hud">
+      <div class="lives" id="lives" title="Vidas restantes">
+        <span class="heart"></span><span class="heart"></span><span class="heart"></span>
+      </div>
+      <p class="q-counter" id="qCounter">Pergunta 0</p>
+      <p class="score" id="score">0 pts</p>
+    </section>
+
+    <!-- Pergunta (topo da tela) -->
+    <section class="question-panel">
+      <p class="question" id="questionText">Escolha um modo para começar.</p>
+
+      <!-- Barrinha de tempo: quanto falta para responder -->
+      <div class="time-bar" id="timeBar" title="Tempo restante para responder">
+        <span class="time-icon" aria-hidden="true">⏱</span>
+        <div class="time-track"><div class="time-fill" id="timeFill"></div></div>
+        <span class="time-label" id="timeLabel">40s</span>
+      </div>
+
+      <div class="strikes" id="strikes" title="Erros desta pergunta (palavra errada ou tempo zerado)">
+        <span class="pip"></span><span class="pip"></span><span class="pip"></span>
+        <span class="strikes-label">erros nesta pergunta</span>
+      </div>
+      <p class="feedback" id="feedback" aria-live="polite"></p>
+    </section>
+
+    <!-- Digitação da resposta -->
+    <section class="typing-bar">
+      <input id="answerInput" type="text" autocomplete="off" autocapitalize="off"
+             spellcheck="false" placeholder="Digite a palavra certa aqui…"
+             aria-label="Digite a palavra certa">
+      <span class="typing-hint">digite a palavra · Enter para confirmar</span>
+    </section>
+
+    <!-- Área do jogo -->
+    <div class="canvas-wrap">
+      <canvas id="gameCanvas" width="900" height="520" aria-label="Área da nave"></canvas>
+    </div>
+
+    </div><!-- fim do bloco 2 (perguntas + jogo) -->
+
+    <!-- Escolha de modo -->
+    <section class="overlay" id="modeOverlay">
+      <div class="overlay-box">
+        <h2>Escolha o modo</h2>
+        <p><strong>Fácil:</strong> a nave fica parada — só as palavras na tela.</p>
+        <p><strong>Difícil:</strong> o mesmo, mas com asteroides caindo — desvie com as setas ← →
+        (ou arrastando o dedo). Cada colisão custa 1 vida.</p>
+        <p>As regras completas estão no bloco <strong>Como jogar</strong>.</p>
+        <button class="btn btn-primary" data-mode="facil">Modo Fácil</button>
+        <button class="btn btn-danger" data-mode="dificil">Modo Difícil</button>
+      </div>
+    </section>
+
+    <!-- Fim de jogo -->
+    <section class="overlay hidden" id="gameOverOverlay">
+      <div class="overlay-box">
+        <h2 id="gameOverTitle">Fim de jogo</h2>
+        <p id="gameOverText"></p>
+        <button class="btn btn-primary" id="btnPlayAgain">Jogar de novo</button>
+        <button class="btn btn-ghost" id="btnChangeMode">Trocar de modo</button>
+      </div>
+    </section>
+
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
