@@ -7,134 +7,84 @@
 
 const QUESTIONS = [
   {
-    q: "Antes mesmo do sistema operacional subir, o computador já sabe testar o hardware. Esse \"manual de instruções de fábrica\" está gravado em qual memória?",
-    a: "ROM", aliases: ["rom"],
-    exp: "A ROM é não volátil e guarda o firmware (BIOS/UEFI) executado ao ligar o PC."
-  },
-  {
-    q: "Um jogo recalcula a posição do personagem 60 vezes por segundo. Qual componente da CPU está fazendo todas essas contas?",
-    a: "ULA", aliases: ["ula", "alu"],
-    exp: "A ULA (Unidade Lógica e Aritmética) executa as operações aritméticas e lógicas."
-  },
-  {
-    q: "A instrução chegou à CPU, mas ninguém decodificou nem distribuiu as tarefas. Qual peça faltou no comando?",
-    a: "UC", aliases: ["uc", "unidade de controle"],
-    exp: "A UC (Unidade de Controle) decodifica as instruções e dá as ordens para os demais componentes."
-  },
-  {
-    q: "Entre uma conta e outra, o dado precisa de um abrigo rapidíssimo dentro da própria CPU. Onde ele fica hospedado?",
-    a: "Registradores", aliases: ["registrador", "registradores"],
-    exp: "Registradores são memórias internas da CPU, as mais rápidas do computador."
-  },
-  {
-    q: "Quando o computador \"não dá conta\" de um jogo pesado, qual componente carrega toda a culpa?",
+    q: "Qual componente é conhecido como o \"cérebro\" do computador, responsável por executar as instruções dos programas e coordenar o sistema?",
     a: "CPU", aliases: ["cpu", "processador"],
-    exp: "A CPU (processador) reúne ULA, UC e registradores e executa as instruções do programa."
+    exp: "A CPU é o cérebro do computador: executa as instruções dos programas e coordena todos os demais componentes."
   },
   {
-    q: "A placa-mãe guarda configurações em um chip que apaga e regrava eletricamente, byte a byte, sem sair do lugar. Qual memória é essa?",
-    a: "EEPROM", aliases: ["eeprom"],
-    exp: "EEPROM pode ser apagada e regravada eletricamente, byte a byte, sem desmontar nada."
+    q: "Qual unidade interna do processador realiza exclusivamente cálculos matemáticos (como adição) e comparações lógicas (como E/OU)?",
+    a: "ULA", aliases: ["ula", "alu", "unidade logica e aritmetica"],
+    exp: "A ULA (Unidade Lógica e Aritmética) faz só contas: soma, subtrai e aplica as comparações lógicas (E/OU)."
   },
   {
-    q: "Pendrive, SSD e a memória do celular guardam fotos mesmo sem energia. Qual tipo de memória eles usam?",
-    a: "Flash", aliases: ["flash", "memoria flash"],
-    exp: "Memória Flash é não volátil, rápida e grava em blocos — base de pendrives, SSDs e celulares."
-  },
-  {
-    q: "Você desliga o computador e o trabalho continua salvo para amanhã. Em qual tipo de memória ele ficou guardado?",
-    a: "Memória de massa", aliases: ["memoria de massa", "massa", "memorias de massa"],
-    exp: "Memórias de massa (HD, SSD, pendrive) armazenam dados a longo prazo, mesmo desligadas."
-  },
-  {
-    q: "A CPU precisa dizer \"casa número X\" antes de buscar um dado. Qual estrutura leva esse recado até a memória?",
-    a: "Address bus", aliases: ["address bus", "barramento de endereco", "barramento endereco"],
-    exp: "O barramento de endereços (address bus) carrega os endereços da CPU para a memória."
-  },
-  {
-    q: "Depois de encontrar o dado, ele precisa viajar de volta para a CPU. Por qual estrada ele trafega?",
-    a: "Data bus", aliases: ["data bus", "barramento de dados", "barramento dados"],
-    exp: "O barramento de dados (data bus) transporta os dados entre CPU, memória e periféricos."
-  },
-  {
-    q: "Uma impressora puxa um arquivo gigante direto da memória sem travar o processador. Que herói transfere os dados sem passar pela CPU?",
-    a: "DMA", aliases: ["dma", "acesso direto a memoria"],
-    exp: "DMA (Direct Memory Access) transfere dados entre periféricos e memória sem ocupar a CPU."
-  },
-  {
-    q: "No Logisim, a ligação que leva um valor lógico de uma porta para outra é apenas um...",
-    a: "Fio", aliases: ["fio", "fios"],
-    exp: "No Logisim, o fio conecta pontos do circuito e leva o valor de um ponto a outro."
-  },
-  {
-    q: "Você abre 10 programas e, ao desligar, tudo que estava em uso some sem deixar rastro. Onde aquilo estava?",
-    a: "RAM", aliases: ["ram", "memoria ram"],
-    exp: "A RAM é volátil: perde todo o conteúdo quando o computador é desligado."
-  },
-  {
-    q: "A CPU é tão ávida que alguém deixou uma memória pequenininha e veloz bem ao lado dela, antecipando os dados. Qual é?",
-    a: "Cache", aliases: ["cache", "memoria cache"],
-    exp: "A Cache fica entre a CPU e a RAM, guardando os dados mais usados para acesso instantâneo."
-  },
-  {
-    q: "Depois da ULA terminar a soma, o resultado para em um registrador especial, esperando a próxima conta. Qual é?",
-    a: "AC", aliases: ["ac", "acumulador", "accumulator"],
-    exp: "O AC (Acumulador) guarda o resultado das operações feitas pela ULA."
-  },
-  {
-    q: "Sem ele, a CPU não saberia qual instrução executar depois: ele guarda o endereço da próxima. Quem é?",
-    a: "PC", aliases: ["pc", "program counter", "contador de programa"],
-    exp: "O PC (Program Counter) guarda o endereço da próxima instrução a ser executada."
-  },
-  {
-    q: "Descobrir se o inimigo foi atingido é, no fundo, uma comparação entre números. Qual componente faz essa comparação?",
-    a: "ULA", aliases: ["ula", "alu"],
-    exp: "Comparações são operações lógicas — trabalho da ULA."
-  },
-  {
-    q: "Os programas abertos vivem em uma memória veloz que apaga tudo quando a tomada é tirada. Qual?",
-    a: "RAM", aliases: ["ram", "memoria ram"],
-    exp: "RAM = memória de trabalho volátil, rápida e temporária."
-  },
-  {
-    q: "Gravada de fábrica, feita para leitura, e sem ela o computador nem saberia começar. Qual memória?",
-    a: "ROM", aliases: ["rom"],
-    exp: "ROM (Read-Only Memory) é não volátil e armazena o firmware de inicialização."
-  },
-  {
-    q: "Quando a CPU \"adivinha\" o que vai precisar e deixa os dados na ponta da língua, em qual memória eles ficam?",
-    a: "Cache", aliases: ["cache", "memoria cache"],
-    exp: "A Cache antecipa os dados mais prováveis de uso, evitando esperas pela RAM."
-  },
-  {
-    q: "São pouquíssimos, moram dentro da CPU e são os lugares mais rápidos de todo o computador. Quais são?",
-    a: "Registradores", aliases: ["registrador", "registradores"],
-    exp: "Registradores guardam dados e instruções em uso imediato pela CPU."
-  },
-  {
-    q: "O HD e o SSD são exemplos de qual categoria de memória, feita para guardar tudo a longo prazo?",
-    a: "Memória de massa", aliases: ["memoria de massa", "massa", "memorias de massa"],
-    exp: "HDs e SSDs são memórias de massa: não voláteis, de grande capacidade."
-  },
-  {
-    q: "Transferir um vídeo da câmera para o disco sem consumir o tempo da CPU: qual mecanismo permite isso?",
-    a: "DMA", aliases: ["dma", "acesso direto a memoria"],
-    exp: "DMA permite transferências diretas entre periféricos e memória."
-  },
-  {
-    q: "Ele carrega números que são \"casas\", não conteúdo: leva endereços da CPU para a memória. Qual é?",
-    a: "Address bus", aliases: ["address bus", "barramento de endereco", "barramento endereco"],
-    exp: "O barramento de endereços transporta endereços, nunca os dados em si."
-  },
-  {
-    q: "É a avenida por onde os próprios dados trafegam entre a CPU e a memória. Qual é?",
-    a: "Data bus", aliases: ["data bus", "barramento de dados", "barramento dados"],
-    exp: "O barramento de dados carrega os valores que estão sendo lidos ou escritos."
-  },
-  {
-    q: "A instrução está guardada na memória, mas quem decide a ordem exata das operações dentro da CPU?",
+    q: "Qual estrutura do processador busca e decodifica as instruções na memória, gerando os sinais que controlam os demais componentes?",
     a: "UC", aliases: ["uc", "unidade de controle"],
-    exp: "A Unidade de Controle coordena a execução das instruções, passo a passo."
+    exp: "A UC (Unidade de Controle) busca e decodifica as instruções e gera os sinais que comandam os demais componentes."
+  },
+  {
+    q: "Como são chamadas as pequenas posições de memória de altíssima velocidade localizadas dentro do próprio processador para guardar dados imediatos?",
+    a: "Registradores", aliases: ["registrador", "registradores"],
+    exp: "Registradores são pequenas memórias de altíssima velocidade dentro da CPU, para dados de uso imediato."
+  },
+  {
+    q: "Qual é a memória principal, volátil, que armazena temporariamente os dados dos programas em execução enquanto o computador está ligado?",
+    a: "RAM", aliases: ["ram", "memoria ram"],
+    exp: "A RAM é a memória principal e volátil: guarda os dados dos programas em execução enquanto o computador está ligado."
+  },
+  {
+    q: "Qual memória não volátil vem gravada com instruções permanentes (como o firmware/BIOS) essenciais para a inicialização do computador?",
+    a: "ROM", aliases: ["rom"],
+    exp: "A ROM é não volátil e vem de fábrica gravada com o firmware (BIOS/UEFI) executado ao ligar o PC."
+  },
+  {
+    q: "Qual tipo de memória não volátil permite que seu conteúdo seja apagado e reprogramado eletricamente sem precisar ser removida da placa?",
+    a: "EEPROM", aliases: ["eeprom"],
+    exp: "A EEPROM pode ser apagada e reprogramada eletricamente, sem precisar remover o chip da placa."
+  },
+  {
+    q: "Qual tecnologia de memória não volátil (derivada da EEPROM) apaga e grava dados em blocos rapidamente, sendo a base de SSDs e pendrives?",
+    a: "Flash", aliases: ["flash", "memoria flash"],
+    exp: "A memória Flash apaga e grava em blocos, com rapidez — é a tecnologia por trás de SSDs e pendrives."
+  },
+  {
+    q: "Qual memória estática ultrarrápida fica posicionada entre a CPU e a RAM para armazenar cópias dos dados mais acessados e evitar esperas do processador?",
+    a: "Cache", aliases: ["cache", "memoria cache"],
+    exp: "A cache fica entre a CPU e a RAM, guardando cópias dos dados mais acessados para o processador não esperar."
+  },
+  {
+    q: "Qual termo define os dispositivos de armazenamento permanente (como HDs e SSDs) usados para guardar grandes volumes de arquivos?",
+    a: "Memória de massa", aliases: ["massa", "memoria de massa", "armazenamento"],
+    exp: "Memória de massa (HD, SSD, pendrive) guarda grandes volumes de arquivos de forma permanente, mesmo desligada."
+  },
+  {
+    q: "Qual recurso permite que os periféricos transfiram dados diretamente para a memória RAM sem precisar sobrecarregar a CPU?",
+    a: "DMA", aliases: ["dma", "direct memory access", "acesso direto a memoria"],
+    exp: "O DMA (Direct Memory Access) transfere dados dos periféricos direto para a RAM, sem ocupar a CPU."
+  },
+  {
+    q: "Qual barramento unidirecional transporta a localização de memória que a CPU deseja acessar?",
+    a: "Address bus", aliases: ["address bus", "barramento de endereco", "barramento endereco"],
+    exp: "O barramento de endereço (address bus) é unidirecional: leva até a memória o endereço que a CPU quer acessar."
+  },
+  {
+    q: "Qual barramento bidirecional é responsável por carregar os dados reais lidos ou gravados entre a CPU e os demais componentes?",
+    a: "Data bus", aliases: ["data bus", "barramento de dados", "barramento dados"],
+    exp: "O barramento de dados (data bus) é bidirecional: carrega os dados lidos ou gravados entre a CPU e os demais componentes."
+  },
+  {
+    q: "Qual chip integrado contém CPU, memória (RAM/Flash) e portas de entrada/saída no mesmo componente, sendo muito usado em automação e robótica?",
+    a: "Microcontrolador", aliases: ["microcontrolador", "mcu"],
+    exp: "O microcontrolador junta CPU, memória e portas de entrada/saída em um só chip — muito usado em automação e robótica."
+  },
+  {
+    q: "Como é chamado o processador que possui dois núcleos físicos de processamento independentes no mesmo chip?",
+    a: "Dual core", aliases: ["dual core", "dualcore"],
+    exp: "Dual core é o processador com dois núcleos físicos independentes no mesmo chip."
+  },
+  {
+    q: "Como é classificado o processador que conta com quatro núcleos físicos de processamento para maior desempenho multitarefa?",
+    a: "Quad core", aliases: ["quad core", "quadcore"],
+    exp: "Quad core é o processador com quatro núcleos físicos de processamento, para mais desempenho em multitarefa."
   }
 ];
 
@@ -768,7 +718,7 @@ function loseLife(reason) {
   explode(ship.x, ship.y, "#ffb703", 34);
   const msg = reason === "reveladas"
     ? "Todas as palavras apareceram antes de você digitar a resposta!"
-    : "Você errou 3 vezes nesta pergunta (palavra errada ou tempo esgotado)!";
+    : "Você errou 3 vezes nesta pergunta (palavra errada, texto fora da tela ou tempo esgotado)!";
   feedback.textContent = `${msg} A resposta era: ${game.current.a}. ${game.current.exp}`;
   feedback.className = "feedback info";
 
@@ -820,9 +770,10 @@ inputEl.addEventListener("keydown", e => {
   if (e.key === "Enter") {
     e.preventDefault();
     if (!tryTypedWord(inputEl.value) && game.phase === "playing") {
+      // texto que não bate com nenhuma palavra da tela também conta erro:
+      // as palavras são só um apoio — o que vale é acertar a resposta.
       if (inputEl.value.trim()) {
-        feedback.textContent = "Essa palavra não está na tela (ou não é a resposta).";
-        feedback.className = "feedback bad";
+        registerStrike("Essa palavra não está na tela!");
       }
       inputEl.value = "";
     }
